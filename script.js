@@ -128,18 +128,20 @@ document.addEventListener('DOMContentLoaded',()=>{
     function startCount(){
         document.getElementById("starting").addEventListener("click",()=>{
             let interval = setInterval(updateCountDown, 1000);
-            interval;
+            return interval;
         });
     }
     startCount();
 
-    function resetCount(){
-        document.getElementById("remet").addEventListener("click",()=>{
-            clearInterval(interval);
-            timer.innerHTML = `${minutes}:${seconds}`;
-        })
-    }
-    resetCount();
+    // function resetCount(){
+    //     document.getElementById("remet").addEventListener("click",()=>{
+    //         let minutes = 10;
+    //         let seconds = 0;
+    //         clearInterval(interval);
+    //         timer.innerHTML = `${minutes}:${seconds}`;
+    //     })
+    // }
+    // resetCount();
 
     function updateCountDown() {
         let minutes = Math.floor(time/60);
@@ -153,13 +155,16 @@ document.addEventListener('DOMContentLoaded',()=>{
                 clearInterval(interval);
                 window.alert("THE FINAL COUNT DOWN TU TUUUUUU TU TU TU TU");
             }
-            return minutes;
+            
+
+            document.getElementById("remet").addEventListener("click",()=>{
+                let minutes = 10;
+                let seconds = 0;
+                clearInterval(interval);
+                timer.innerHTML = `${minutes}:${seconds}`;
+            })
 
         }
-
-
-
-        
         function addMin(){
             updateCountDown()
             document.getElementById("add").addEventListener("click",()=>{
