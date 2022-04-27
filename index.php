@@ -23,18 +23,10 @@
             <h2>Tours</h2>
             <p id="lap"></p>
         </article>
-<!-- 
-        <article id="timero">
-            <p id='timer'></p>
-            <button id="add">Ajouté</button>
-            <button id="remove">Suprimé</button>            
-            <button id="starting">start</button>
-            <button id="remet">reset</button>
-        </article> -->
 
         <div id="container">
             <p id="hour-label" class="label">Heure</p>
-            <p id="minute-label" class="label">Minutes</p>
+            <p id="min-label" class="label">Minutes</p>
             <p id="sec-label" class="label">Secondes</p>
             <input id="hour" type="number" max="99" min="0" value="0" class="time">
             <p id="p1" class="semicolon">:</p>
@@ -44,6 +36,15 @@
             <button id="starting" class="btn">Start</button>
             <button id="reseting" class="btn">Reset</button>
         </div>
+
+        <article>
+            <p id="alarme"></p>
+            <input id="reveil" name="alarmTime" type="datetime-local">
+            <div class="control">
+                <button id="buttonSetAlarm">Set l'alarm</button>
+                <button id="buttonClearAlarm">Clear alarm</button>
+            </div>
+        </article>
     </main>
 </body>
 </html>

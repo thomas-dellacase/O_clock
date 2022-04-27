@@ -6,9 +6,9 @@ document.addEventListener('DOMContentLoaded',()=>{
     let reset = document.querySelector("#reset");
     let tours = document.querySelector("#tours");
     let lap = document.querySelector("#lap");
-    let timer = document.querySelector("#timer");
-    let add = document.querySelector("#add");
-    let remove = document.querySelector("#remove");
+    //let timer = document.querySelector("#timer");
+    //let add = document.querySelector("#add");
+    //let remove = document.querySelector("#remove");
     //let starting = document.querySelector("#starting");
     let remet = document.querySelector("#remet");
     let submit = document.querySelector("#submit");
@@ -67,50 +67,6 @@ document.addEventListener('DOMContentLoaded',()=>{
     touro();
 
     //--------------------------------------------------------------------------------------
-
-    // let startingMinutes = 10;
-    // let time = startingMinutes * 60;
-
-
-    // function updateCountDown() {
-    //     let minutes = Math.floor(time/60);
-    //     let seconds = time%60;
-
-    //     seconds = seconds < 10 ? '0' + seconds : seconds;
-    //     timer.innerHTML = `${minutes}:${seconds}`;
-    //     time --;
-
-    //     document.getElementById("starting").addEventListener("click",()=>{
-    //         setInterval(updateCountDown, 1000);
-    //         //return interval;
-    //     });
-
-    //         if(minutes == 0 && seconds == 0){
-    //             clearInterval(interval);
-    //             window.alert("THE FINAL COUNT DOWN TU TUUUUUU TU TU TU TU");
-    //         }
-            
-    //     }
-
-    //     function resetCount(){
-    //         document.getElementById("remet").addEventListener("click",()=>{
-    //             clearInterval();
-    //             //var interval = setInterval(updateCountDown, 1000);
-    //             let minutes = 10;
-    //             let seconds = 0;
-    //             timer.innerHTML = `${minutes}:${seconds}`;
-    //         })
-    //     } resetCount();
-        
-
-    //     function addMin(){
-    //         updateCountDown()
-    //         document.getElementById("add").addEventListener("click",()=>{
-    //             minutes ++;
-    //         });
-    //     }
-    //     addMin(); 
-
     var starting = document.getElementById("starting");
     var reseting = document.getElementById("reseting");
 
@@ -178,6 +134,77 @@ document.addEventListener('DOMContentLoaded',()=>{
         setTimeout(showTimer, 1000);
     }
     showTimer();
+
+//--------------------------------------------------------------------------------------------------
+    let setAlarm = document.querySelector("#buttonSetAlarm");
+    let clearAlarm = document.querySelector("#buttonClearAlarm");
+    let reveille = document.querySelector("#reveil");
+
+    const audio = new Audio("theFinal.mp3");
+    audio.loop = true;
+    let alarmTime = null;
+    let alarmTimeout = null;
+
+    function alarmClock(){
+        const date = new Date()
+        let innerp = document.querySelector("#alarme");
+        let sec = formatTime(date.getSeconds());
+        let min = formatTime(date.getMinutes());
+        let hrs = formatTime(date.getHours());
+        let timer = hrs + ":" + min + ":" + sec;
+        innerp.innerHTML = timer;
+        setTimeout(alarmClock, 1000);
+
+    }
+    alarmClock();
+    function formatTime(time){
+        if(time < 10){
+            return '0' + time
+        }
+        return time;
+    }
+
+    function setAlarmTime(){
+        reveille.addEventListener("change",()=>{
+            console.log("setAlarmTime");
+            alarmTime = reveille.value;
+        })
+    }            setAlarmTime();
+
+    function setAlarme(){
+        if (alarmTime){
+            const current = new Date();
+            const timeToAlarm = new Date(alarmTime);
+            if(timeToAlarm > current){
+                const timeout = timeToAlarm.getTime() - current.getTime();
+                alarmTimeout = setTimeout(()=> audio.play(), timeout);
+                console.log('coucou');
+                window.alert('Reveil set up ');
+            }
+        }
+    }
+    function alarmSet(){
+        setAlarm.addEventListener('click',()=>{
+            console.log('coucou2');
+            setAlarme();
+        });
+    }
+    alarmSet();
+
+    function clearAlarme(){
+        audio.pause();
+        if(alarmTimeout){
+            clearTimeout(alarmTimeout);
+            alert("Reveil cleared")
+        }
+    }
+    function clearedAlarm(){
+        clearAlarm.addEventListener('click',clearAlarme);
+    }
+    clearedAlarm();
+
+
+
 })
 
 
