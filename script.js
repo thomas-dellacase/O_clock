@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     let stop = document.querySelector("#stop");
     let reset = document.querySelector("#reset");
     let tours = document.querySelector("#tours");
-    let lap = document.querySelector("#lap");
+    let lap = document.getElementById("lap");
     //let timer = document.querySelector("#timer");
     //let add = document.querySelector("#add");
     //let remove = document.querySelector("#remove");
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     let min = 0;
     let hrs = 0;
     let timeout;
-//----------------------------------------------------------
+//-------------------------------chrono---------------------------
     function chronometer() {
             sec ++;
             if(sec >= 60){
@@ -58,15 +58,24 @@ document.addEventListener('DOMContentLoaded',()=>{
 
     function tour() {
         let lapp = hrs + ":" + min + ":" + sec;
-        lap.innerHTML = lapp;
+        //lap.innerHTML = lapp;
     }
 
     function touro() {
         tours.addEventListener("click",tour);
     }
-    touro();
+ 
 
-    //--------------------------------------------------------------------------------------
+    function tourage(){
+           touro();
+        let newP = document.createElement("p");
+        lap.appendChild(document.createElement(newP))
+        newP.id = "lapping";
+        newP 
+
+    }
+
+    //-----------------------------------timer---------------------------------------------------
     var starting = document.getElementById("starting");
     var reseting = document.getElementById("reseting");
 
@@ -139,11 +148,13 @@ document.addEventListener('DOMContentLoaded',()=>{
     let setAlarm = document.querySelector("#buttonSetAlarm");
     let clearAlarm = document.querySelector("#buttonClearAlarm");
     let reveille = document.querySelector("#reveil");
+    let message = document.querySelector("#messAlarm");
 
     const audio = new Audio("theFinal.mp3");
     audio.loop = true;
     let alarmTime = null;
     let alarmTimeout = null;
+    let messag = null;
 
     function alarmClock(){
         const date = new Date()
@@ -169,17 +180,40 @@ document.addEventListener('DOMContentLoaded',()=>{
             console.log("setAlarmTime");
             alarmTime = reveille.value;
         })
-    }            setAlarmTime();
+    }            
+    setAlarmTime();
+
+    function messageAlarm(){
+        message.addEventListener("focusout",()=>{
+            console.log("messs");
+            messag = message.value;
+        });
+    }
+    messageAlarm();
+
 
     function setAlarme(){
         if (alarmTime){
             const current = new Date();
             const timeToAlarm = new Date(alarmTime);
-            if(timeToAlarm > current){
+            if(timeToAlarm.getTime() > current.getTime()){
                 const timeout = timeToAlarm.getTime() - current.getTime();
-                alarmTimeout = setTimeout(()=> audio.play(), timeout);
-                console.log('coucou');
-                window.alert('Reveil set up ');
+                let alarmTimeout = setTimeout(()=> audio.play(), timeout);
+                let messageAlerte = setTimeout(()=> window.alert(messag), timeout);
+                console.log(timeout);
+                console.log(timeToAlarm.getTime());
+                console.log(current.getTime());
+                console.log(alarmTimeout);
+                console.log(timeToAlarm.length);
+                console.log(current.length);
+                console.log(typeof timeToAlarm);
+                console.log(typeof current);
+                window.alert("Reveil set up pour le" + " " + alarmTime);
+            }
+            if(timeToAlarm.getTime() == current.getTime()){
+                
+                console.log('coucougfd');
+                
             }
         }
     }

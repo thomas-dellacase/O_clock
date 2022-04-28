@@ -11,7 +11,7 @@
 <body>
     <main>
         <article id="Horloge">
-                <p id="time"></p>
+                <h1 id="time"></h1>
         </article>
 
         <article id="Chrono">
@@ -21,7 +21,9 @@
             <button id="reset">reset</button>
             <button id="tours">tours</button>
             <h2>Tours</h2>
-            <p id="lap"></p>
+            <div id="lap">
+                
+            </div>
         </article>
 
         <div id="container">
@@ -38,8 +40,9 @@
         </div>
 
         <article>
-            <p id="alarme"></p>
+            <h1 id="alarme"></h1>
             <input id="reveil" name="alarmTime" type="datetime-local">
+            <input id="messAlarm" type="text">
             <div class="control">
                 <button id="buttonSetAlarm">Set l'alarm</button>
                 <button id="buttonClearAlarm">Clear alarm</button>
