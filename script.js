@@ -32,7 +32,11 @@ document.addEventListener('DOMContentLoaded',()=>{
         timeout = setTimeout(chronometer,1000);
     }
     function starto() {
-        start.addEventListener("click",chronometer)
+        start.addEventListener("click",chronometer);
+        start.disable()=true;
+        stop.disable()=false;
+        reset.disable()=false;
+        tours.disable()=false;
     }
     starto();
 
