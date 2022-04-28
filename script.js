@@ -56,23 +56,24 @@ document.addEventListener('DOMContentLoaded',()=>{
     }
     reseto();
 
-    function tour() {
-        let lapp = hrs + ":" + min + ":" + sec;
-        //lap.innerHTML = lapp;
-    }
+    // function tour() {
+    //     let lapp = hrs + ":" + min + ":" + sec;
+    //     //lap.innerHTML = lapp;
+    // }
 
     function touro() {
-        tours.addEventListener("click",tour);
+        tours.addEventListener("click",tourage);
     }
+    touro();
  
 
     function tourage(){
-           touro();
+        let lapp = hrs + ":" + min + ":" + sec;
         let newP = document.createElement("p");
-        lap.appendChild(document.createElement(newP))
+        lap.appendChild(document.createElement("newP"))
         newP.id = "lapping";
-        newP 
-
+        newP.innerHTML = lapp;
+        lap.after(newP);
     }
 
     //-----------------------------------timer---------------------------------------------------
