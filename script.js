@@ -32,17 +32,23 @@ document.addEventListener('DOMContentLoaded',()=>{
         timeout = setTimeout(chronometer,1000);
     }
     function starto() {
-        start.addEventListener("click",chronometer);
-        start.disable()=true;
-        stop.disable()=false;
-        reset.disable()=false;
-        tours.disable()=false;
+        start.addEventListener("click", ()=>{
+        chronometer();
+        start.disabled=true;
+        stop.disabled=false;
+        reset.disabled=true;
+        tours.disabled=false;
+    });
     }
     starto();
 
     function Stopage() {
         stop.addEventListener("click", ()=>{
             clearTimeout(timeout);
+            start.disabled=false;
+            stop.disabled=true;
+            reset.disabled=false;
+            tours.disabled=true;
         })
     }
     Stopage();
@@ -73,11 +79,11 @@ document.addEventListener('DOMContentLoaded',()=>{
 
     function tourage(){
         let lapp = hrs + ":" + min + ":" + sec;
-        let newP = document.createElement("p");
-        lap.appendChild(document.createElement("newP"))
-        newP.id = "lapping";
-        newP.innerHTML = lapp;
-        lap.after(newP);
+        let p = document.createElement("p");
+        lap.appendChild(document.createElement("p"))
+        p.id = "lapping";
+        p.innerHTML = lapp;
+        lap.after(p);
     }
 
     //-----------------------------------timer---------------------------------------------------
