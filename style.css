@@ -143,7 +143,25 @@ header{
 .chrono{
     width: 8%;
 }
-
+@media (max-width: 360px) {
+    #container {
+        height: 20%;
+        width: 95%;
+        background-color: #F5E4C3;
+        margin: 0 auto;
+        border: 5px solid #88B169;
+    
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+    }
+    .time{
+        margin-left: 10%;
+    }
+    .chrono{
+        width: 15%;
+    }
+}
 
 
 
