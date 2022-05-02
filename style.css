@@ -124,16 +124,23 @@ header{
 }
 #lapconteiner{
     width: 100%;
-}
-#lapconteiner {
     justify-content: center;
 }
+
 #lapping {
     width: 100%;
     text-align: center;
     color:white;
 }
-
+#alarmConteiner {
+  width: 100%;
+  justify-content: center;
+}
+#alarming {
+  width: 100%;
+  text-align: center;
+  color:white;
+}
 #buttonSetAlarm{
     width: -webkit-fill-available;
 }

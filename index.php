@@ -43,6 +43,10 @@
                 <button id="buttonSetAlarm">Set l'alarm</button>
                 <button id="buttonClearAlarm">Clear alarm</button>
             </div>
+            <div id=alarmConteiner>
+              <div id=alarming>
+              </div>
+            </div>
         </article>
         <article id="Chrono" class="art">
             <h1>Chronometre</h1>
@@ -58,7 +62,6 @@
             </div>
         </article>
     </main>
-    
     <footer class="site-footer">
       <div class="container">
         <div class="row">

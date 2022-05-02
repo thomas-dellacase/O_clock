@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded',()=>{
         tours.addEventListener("click",tourage);
     }
     touro();
- 
+
 
     function tourage(){
         let lapp = hrs + ":" + min + ":" + sec;
@@ -190,6 +190,15 @@ document.addEventListener('DOMContentLoaded',()=>{
         reveille.addEventListener("change",()=>{
             console.log("setAlarmTime");
             alarmTime = reveille.value;
+            alarmin = alarmTime;
+            let alarmo = document.createElement("p");
+            // var checkBox = document.createElement("input");
+            // checkBox.setAttribute("type", "checkbox");
+            alarming.appendChild(alarmo);
+            //alarming.appendChild(checkBox);
+            alarmo.id = alarmin;
+            alarmo.innerHTML = alarmTime;
+            //alarming.after(alarmo);
         })
     }            
     setAlarmTime();
